@@ -3,6 +3,7 @@
     "virtual_machines": [
       
       {
+      "commonmetaData":{
        "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
@@ -10,10 +11,20 @@
        "tags": {
         "environment": "production",
         "department": "IT"
+    }
+   },
+   "properties":{
+       "size":"",
+       "operating_system":"",
+       "network_interfaces":[],
+       "disks":[],
+       "security":{}
+       
     }
       },
 
       {
+      "commonmetaData":{
        "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
@@ -22,7 +33,18 @@
         "environment": "production",
         "department": "IT"
     }
+    },
+    "properties":{
+       "size":"",
+       "operating_system":"",
+       "network_interfaces":[],
+       "disks":[],
+       "security":{}
+       
+    }
+
    }
+
     ] 
 ,
 
