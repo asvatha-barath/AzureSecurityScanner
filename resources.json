@@ -4,58 +4,74 @@
       
       {
        "resource_id": "web-server-01",
-       "resource_group": "VirtualMachine",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "tags":"Production"
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
       },
 
       {
     
        "resource_id": "web-server-01",
-       "resource_group": "VirtualMachine",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "tags":"Production"
-      }
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
+   }
     ] 
 ,
 
     "databases": [
       
-      {
+    {
        "resource_id": "web-server-01",
-       "resource_group": "VirtualMachine",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "tags":"Production"
-      },
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
+   },
 
-      {
-    
-      "resource_id": "web-server-01",
-       "resource_group": "VirtualMachine",
+     {
+       "resource_id": "web-server-01",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "tags":"Production"
-      }
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
+   }
+   
    ],
 
     "storage_accounts": [
       
-      {
-       "name": "mainstorage",
-       "type": "storage",
+    {
+       "resource_id": "web-server-01",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "resourcegroup":"Production"
-      },
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
+   },
 
-      {
-    
-      "resource_id": "web-server-01",
-       "resource_group": "VirtualMachine",
+     {
+       "resource_id": "web-server-01",
+       "resource_group": "Production",
        "location": "eastCoastUS",
-       "tags":"Production"
-      }
-
+       "tags": {
+        "environment": "production",
+        "department": "IT"
+    }
+   }
    
-    ] 
+   ]
 
    }
 }
