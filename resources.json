@@ -1,31 +1,60 @@
 {
     "resources":{
-    "VirtualMachines": [
+    "virtual_machines": [
       
       {
-       "name": "web-server1",
-       "type": "VirtualMachine",
+       "resource_id": "web-server-01",
+       "resource_group": "VirtualMachine",
+       "location": "eastCoastUS",
+       "tags":"Production"
+      },
+
+      {
+    
+       "resource_id": "web-server-01",
+       "resource_group": "VirtualMachine",
+       "location": "eastCoastUS",
+       "tags":"Production"
+      }
+    ] 
+,
+
+    "databases": [
+      
+      {
+       "resource_id": "web-server-01",
+       "resource_group": "VirtualMachine",
+       "location": "eastCoastUS",
+       "tags":"Production"
+      },
+
+      {
+    
+      "resource_id": "web-server-01",
+       "resource_group": "VirtualMachine",
+       "location": "eastCoastUS",
+       "tags":"Production"
+      }
+   ],
+
+    "storage_accounts": [
+      
+      {
+       "name": "mainstorage",
+       "type": "storage",
        "location": "eastCoastUS",
        "resourcegroup":"Production"
       },
 
       {
     
-      "name": "web-server2",
-       "type": "VirtualMachine",
-       "location": "westCoastUS",
-       "resourcegroup":"Production"
-      },
-
-
-      {
-       "name": "web-server3",
-       "type": "VirtualMachine",
-       "location": "northCoastUS",
-       "resourcegroup":"Production"
-
-
+      "resource_id": "web-server-01",
+       "resource_group": "VirtualMachine",
+       "location": "eastCoastUS",
+       "tags":"Production"
       }
+
+   
     ] 
 
    }
