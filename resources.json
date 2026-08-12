@@ -1,11 +1,10 @@
 {
-
     "resources":[
     {
        "name": "web-server1",
        "type": "VirtualMachine",
        "location": "eastCoastUS",
-       "resourcegroup":""
+       "resourcegroup":"Production"
 
 
 
@@ -15,7 +14,7 @@
       "name": "web-server2",
        "type": "VirtualMachine",
        "location": "westCoastUS",
-       "resourcegroup":""
+       "resourcegroup":"Production"
     },
 
 
@@ -23,14 +22,12 @@
        "name": "web-server3",
        "type": "VirtualMachine",
        "location": "northCoastUS",
-       "resourcegroup":""
+       "resourcegroup":"Production"
 
 
     }
 
 
 ]
-
-
 
 }
