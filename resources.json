@@ -1,5 +1,7 @@
 {
     "resources":{
+
+
     "virtual_machines": [
       
       {
@@ -45,13 +47,14 @@
 
    }
 
-    ] 
-,
+    ],
+
 
     "databases": [
       
     {
-      "name":"1",
+      "commonmetaData":{
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -60,9 +63,19 @@
         "department": "IT"
     }
    },
+   "properties":{
+       "engine":"",
+       "engine_version":"",
+       "compute_tier":"",
+       "server_name":[],
+       "security":{}
+       
+    }
+      },
 
-     {
-      "name":"1",
+      {
+      "commonmetaData":{
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -70,14 +83,26 @@
         "environment": "production",
         "department": "IT"
     }
+    },
+    "properties":{
+       "engine":"",
+       "engine_version":"",
+       "compute_tier":"",
+       "server_name":[],
+       "security":{}
+       
+    }
+
    }
-   
-   ],
+
+
+    ],
 
     "storage_accounts": [
       
-    {
-      "name":"1",
+     {
+      "commonmetaData":{
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -86,9 +111,18 @@
         "department": "IT"
     }
    },
+   "properties":{
+       "account_kind":"",
+       "replication":"",
+       "network_interfaces":[],
+       "security":{}
+       
+    }
+      },
 
-     {
-      "name":"1",
+      {
+      "commonmetaData":{
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -96,9 +130,18 @@
         "environment": "production",
         "department": "IT"
     }
+    },
+    "properties":{
+       "account_kind":"",
+       "replication":"",
+       "network_interfaces":[],
+       "security":{}
+       
+    }
+
    }
-   
-   ]
+
+    ]
 
    }
 }
