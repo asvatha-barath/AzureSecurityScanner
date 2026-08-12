@@ -5,43 +5,53 @@
     "virtual_machines": [
       
       {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
+      "common_meta_data":{
+       "name":"web-server-01",
+       "resource_id": "vm-web-server-01",
        "resource_group": "Production",
-       "location": "eastCoastUS",
+       "location": "eastus",
        "tags": {
         "environment": "production",
         "department": "IT"
     }
    },
    "properties":{
-       "size":"",
-       "operating_system":"",
-       "network_interfaces":[],
-       "disks":[],
-       "security":{}
+       "size":"Standard_B2s",
+       "operating_system":"Linux",
+       "network_interfaces":[{"name": "web-server-nic","private_ip": "10.0.1.10","public_ip": "203.0.113.10"}],
+       "disks":[{"name": "web-server-os-disk","type": "OS","size_gb": 64}],
+        "security": {
+                        "public_access": true,
+                        "disk_encryption": true,
+                        "secure_boot": true,
+                        "network_security_group": true
+                    }
        
     }
       },
 
       {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
-       "resource_group": "Production",
-       "location": "eastCoastUS",
+      "common_meta_data":{
+       "name":"dev-server-01",
+       "resource_id": "vm-dev-server-01",
+       "resource_group": "Development",
+       "location": "eastus",
        "tags": {
-        "environment": "production",
-        "department": "IT"
+        "environment": "development",
+        "department": "engineering"
     }
     },
     "properties":{
-       "size":"",
-       "operating_system":"",
-       "network_interfaces":[],
-       "disks":[],
-       "security":{}
+       "size":"Standard_D2s_v5",
+       "operating_system":"Windows",
+       "network_interfaces":[{"name": "dev-server-nic","private_ip": "10.0.2.10","public_ip": null}],
+       "disks":[{"name": "dev-server-os-disk","type": "OS","size_gb": 128}],
+       "security": {
+                        "public_access": false,
+                        "disk_encryption": true,
+                        "secure_boot": true,
+                        "network_security_group": true
+                    }
        
     }
 
@@ -53,46 +63,56 @@
     "databases": [
       
     {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
-       "resource_group": "Production",
-       "location": "eastCoastUS",
-       "tags": {
-        "environment": "production",
-        "department": "IT"
+     "common_meta_data":{
+         "name": "production-db",
+         "resource_id": "db-production-01",
+         "resource_group": "Production",
+         "location": "eastus",
+         "tags": {
+            "environment": "production",
+            "department": "IT"
+                    }
     }
-   },
+   ,
    "properties":{
-       "engine":"",
-       "engine_version":"",
-       "compute_tier":"",
-       "server_name":"",
-       "security":{}
-       
+       "engine": "PostgreSQL",
+       "engine_version": "16",
+       "compute_tier": "General Purpose",
+       "server_name": "production-db-server",
+      "security": {
+            "public_access": true,
+            "encryption": true,
+            "minimum_tls_version": "TLS1.2",
+            "authentication": "Password"
+                    }
     }
       },
 
       {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
-       "resource_group": "Production",
-       "location": "eastCoastUS",
-       "tags": {
-        "environment": "production",
-        "department": "IT"
-    }
+      "common_meta_data":{
+        "name": "development-db",
+         "resource_id": "db-development-01",
+         "resource_group": "Development",
+          "location": "eastus",
+           "tags": {
+                "environment": "development",
+                "department": "Engineering"
+                    }
+    
     },
     "properties":{
-       "engine":"",
-       "engine_version":"",
-       "compute_tier":"",
-       "server_name":"",
-       "security":{}
+       "engine": "MySQL",
+                    "engine_version": "8.0",
+                    "compute_tier": "Burstable",
+                    "server_name": "development-db-server",
+                    "security": {
+                        "public_access": false,
+                        "encryption": true,
+                        "minimum_tls_version": "TLS1.2",
+                        "authentication": "Password"
        
     }
-
+    }
    }
 
 
@@ -101,45 +121,53 @@
     "storage_accounts": [
       
      {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
-       "resource_group": "Production",
-       "location": "eastCoastUS",
-       "tags": {
-        "environment": "production",
-        "department": "IT"
-    }
-   },
+      "common_meta_data":{
+         "name": "companystorage01",
+         "resource_id": "storage-company-01",
+         "resource_group": "Production",
+          "location": "eastus",
+          "tags": {
+               "environment": "production",
+               "department": "IT"
+                    }
+    },
    "properties":{
-       "account_kind":"",
-       "replication":"",
-       "network_interfaces":[],
-       "security":{}
+     "account_kind": "StorageV2",
+     "replication": "GRS",
+     "network": {"public_network_access": true},
+         "security": {
+                     "encryption": true,
+                      "secure_transfer_required": true,
+                      "minimum_tls_version": "TLS1.2"
+                    }
        
     }
       },
 
       {
-      "commonmetaData":{
-       "name":"1",
-       "resource_id": "web-server-01",
-       "resource_group": "Production",
-       "location": "eastCoastUS",
-       "tags": {
-        "environment": "production",
-        "department": "IT"
+    "common_meta_data":{
+        "name": "backupstorage01",
+         "resource_id": "storage-backup-01",
+         "resource_group": "Production",
+         "location": "eastus",
+         "tags": {
+               "environment": "production",
+              "department": "Backup"                
     }
     },
     "properties":{
-       "account_kind":"",
-       "replication":"",
-       "network_interfaces":[],
-       "security":{}
+       "account_kind": "StorageV2",
+      "replication": "LRS",
+      "network": {"public_network_access": false},
+       "security": {
+            "encryption": true,
+            "secure_transfer_required": true,
+            "minimum_tls_version": "TLS1.2"
+                    }
        
-    }
+       }
 
-   }
+      }
 
     ]
 
