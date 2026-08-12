@@ -3,6 +3,7 @@
     "virtual_machines": [
       
       {
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -13,7 +14,7 @@
       },
 
       {
-    
+       "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -28,6 +29,7 @@
     "databases": [
       
     {
+      "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -38,6 +40,7 @@
    },
 
      {
+      "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -52,6 +55,7 @@
     "storage_accounts": [
       
     {
+      "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
@@ -62,6 +66,7 @@
    },
 
      {
+      "name":"1",
        "resource_id": "web-server-01",
        "resource_group": "Production",
        "location": "eastCoastUS",
