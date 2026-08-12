@@ -2,22 +2,28 @@
 
     "resources":[
     {
-       "name": "",
-       "type": ""
+       "name": "web-server1",
+       "type": "VirtualMachine",
+       "location": "eastCoastUS",
+       "resourcegroup":""
 
 
 
     },
     {
     
-       "name": "",
-       "type": ""
+      "name": "web-server2",
+       "type": "VirtualMachine",
+       "location": "westCoastUS",
+       "resourcegroup":""
     },
 
 
     {
-       "name": "",
-       "type": ""
+       "name": "web-server3",
+       "type": "VirtualMachine",
+       "location": "northCoastUS",
+       "resourcegroup":""
 
 
     }
