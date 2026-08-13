@@ -67,7 +67,7 @@ for resource_type,resource_list in resources.items():
              print("VM SECURE BOOT - SECURITY FAIL")
              secureboot_issues.append(name)
 
-print("------CURRENT SECURITY ISSUES------")
+print("\n------CURRENT SECURITY ISSUES------\n")
 for i in range(len(public_access_issues)):
       print(public_access_issues[i])
 for i in encryption_issues:
