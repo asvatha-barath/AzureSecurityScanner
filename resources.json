@@ -163,7 +163,7 @@
             "encryption": true,
             "secure_transfer_required": true,
             "minimum_tls_version": "TLS1.2"
-                    }
+               }
        
        }
 
