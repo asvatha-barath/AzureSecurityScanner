@@ -68,16 +68,17 @@ for resource_type,resource_list in resources.items():
              secureboot_issues.append(name)
 
 print("\n------CURRENT SECURITY ISSUES------\n")
-print("   Public Access Issues   ")
-for i in public_access_issues:
-      print(i)
 
-print("   Encryption  Issues   ")
+print("Public Access Issues")
+for i in public_access_issues:
+      print(" ", i)
+
+print("Encryption  Issues")
 for i in encryption_issues:
-      print(i)
-print("   Virtual Machine Secure Boot Issues   ")     
+      print(" ", i)
+print("Virtual Machine Secure Boot Issues")     
 for i in secureboot_issues:
-      print(i)
+      print(" ", i)
 
                      
         
