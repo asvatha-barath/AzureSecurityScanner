@@ -1,5 +1,5 @@
 import json #importing json files
-
+from abc import ABC, abstractmethod
 def access_test_data():
     with open ("resources.json", "r") as datafile:
      data = json.load(datafile) 
@@ -23,19 +23,33 @@ def print_resource_details(name,id,properties,resources):
 
                 for property,value in properties.items():
                      print(" ",property, "-->", value )
+
+#Logic Only
+class identify_security_issues(ABC):
+    def __init__(self,expected_encryption, expected_public_access, expected_secure_boot):
+        self.expected_public_access = expected_public_access
+        self.expected_encryption = expected_encryption
+        self.expected_secure_boot = expected_secure_boot
         
-      
+    @abstractmethod
+    def check_public_access(self)
+        pass
+
+    @abstractmethod
+    def check_encryption(self)
+            pass
+    
+    @abstractmethod
+    def check_secureboot(self)
+            pass
+
+
+
     
 data = access_test_data()
 
 resources = data["resources"]
-expected_public_access = False
-expected_encryption = True
-expected_secure_boot = True
 
-public_access_issues=[]
-encryption_issues=[]
-secureboot_issues=[]
 #PRINTING AND JSON CONNECT
 data = access_test_data()
 name,id,properties =get_resource_details(data)
