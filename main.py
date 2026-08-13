@@ -24,9 +24,9 @@ for resource_type,resource_list in resources.items():
         else:
              raise KeyError
         if PAK == True:
-             print(f" {name} --> Public Access Key ENABLED")
+             print(f"\n{name} --> Public Access Key ENABLED\n")
         else:
-             print(f" {name} --> Public Access Key NOT ENABLED")
+             print(f"\n{name} --> Public Access Key NOT ENABLED\n")
              
                 
         
