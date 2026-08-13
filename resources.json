@@ -22,7 +22,7 @@
        "disks":[{"name": "web-server-os-disk","type": "OS","size_gb": 64}],
         "security": {
                         "public_access": true,
-                        "disk_encryption": true,
+                        "disk_encryption": false,
                         "secure_boot": true,
                         "network_security_group": true
                     }
