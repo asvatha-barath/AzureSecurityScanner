@@ -15,9 +15,10 @@ def get_resource_details(data):
     return name,id,properties
 
 def print_resource_details(name,id,properties,resources):
-      print("-"*45)
+     
       for resource_type,resource_list in resources.items():
             for resource in resource_list:
+                print("-"*45)
                 print(f"resource type: {resource_type} name: {name} resource_id:, {id}")
 
                 for property,value in properties.items():
