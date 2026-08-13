@@ -11,15 +11,12 @@ def get_resource_details(resource):
           properties =(resource["properties"])
           return name,id,properties
 
-def print_resource_details(name,id,properties,resources):
-     
-      for resource_type,resource_list in resources.items():
-            for resource in resource_list:
-                print("-"*45)
-                print(f"resource type: {resource_type} name: {name} resource_id:, {id}")
+def print_resource_details(name,id,properties,resource_type):
+        print("-"*45)
+        print(f"resource type: {resource_type} name: {name} resource_id:, {id}")
 
-                for property,value in properties.items():
-                     print(" ",property, "-->", value )
+        for property,value in properties.items():
+            print(" ",property, "-->", value )
 
 #Logic Only
 '''
@@ -52,19 +49,14 @@ class VMsecurity (identify_security_issues):
                    
        else:
                     print("PUBLIC ACCESS - SECURITY FAIL")'''
-                    
-       
-   
-
-
-
+           
 data = access_test_data()
 
 resources = data["resources"]
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
               name,id,properties = get_resource_details(resource)
-              print_resource_details(name,id,properties,resources)
+              print_resource_details(name,id,properties,resource_type)
 
 
 #PRINTING AND JSON CONNECT
