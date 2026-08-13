@@ -5,6 +5,8 @@ with open ("resources.json", "r") as datafile:
 
 resources = data["resources"]
 
+expected_public_access = False
+
 for resource_type,resource_list in resources.items():
     print("-"*45)
     print(resource_type)
@@ -23,10 +25,11 @@ for resource_type,resource_list in resources.items():
             PAK = properties["network"]["public_network_access"]
         else:
              raise KeyError
-        if PAK == True:
-             print(f"\n{name} --> Public Access Key ENABLED\n")
+        if PAK == expected_public_access:
+            print("SECURITY PASS")
+            
         else:
-             print(f"\n{name} --> Public Access Key NOT ENABLED\n")
+             print("SECURITY FAIL")
              
                 
         
