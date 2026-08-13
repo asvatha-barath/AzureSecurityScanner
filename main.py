@@ -5,14 +5,11 @@ def access_test_data():
      data = json.load(datafile) 
     return data
 
-def get_resource_details(data):
-    resources = data["resources"]
-    for resource_type,resource_list in resources.items():
-        for resource in resource_list:
+def get_resource_details(resource):
           name = (resource["common_meta_data"])["name"]
           id = (resource["common_meta_data"])["resource_id"]
           properties =(resource["properties"])
-    return name,id,properties
+          return name,id,properties
 
 def print_resource_details(name,id,properties,resources):
      
@@ -25,6 +22,7 @@ def print_resource_details(name,id,properties,resources):
                      print(" ",property, "-->", value )
 
 #Logic Only
+'''
 class identify_security_issues(ABC):
     def __init__(self,expected_encryption, expected_public_access, expected_secure_boot):
         self.expected_public_access = expected_public_access
@@ -32,28 +30,44 @@ class identify_security_issues(ABC):
         self.expected_secure_boot = expected_secure_boot
         
     @abstractmethod
-    def check_public_access(self)
+    def check_public_access(self):
         pass
 
     @abstractmethod
-    def check_encryption(self)
+    def check_encryption(self):
             pass
     
     @abstractmethod
-    def check_secureboot(self)
+    def check_secureboot(self):
             pass
+class VMsecurity (identify_security_issues):
+   def __init__(expected_encryption, expected_public_access, expected_secure_boot):
+        super().__init__(True,False,True)
+
+        
+   def check_public_access(self):
+       PAK = properties["security"]["public_access"]
+       if PAK == expected_public_access:
+                   print("PUBLIC ACCESS - SECURITY PASS")
+                   
+       else:
+                    print("PUBLIC ACCESS - SECURITY FAIL")'''
+                    
+       
+   
 
 
 
-    
 data = access_test_data()
 
 resources = data["resources"]
+for resource_type, resource_list in resources.items():
+        for resource in resource_list:
+              name,id,properties = get_resource_details(resource)
+              print_resource_details(name,id,properties,resources)
+
 
 #PRINTING AND JSON CONNECT
-data = access_test_data()
-name,id,properties =get_resource_details(data)
-print_resource_details(name,id,properties,resources)
 
         
         
