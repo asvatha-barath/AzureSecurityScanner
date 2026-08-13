@@ -1,7 +1,30 @@
 import json #importing json files
-with open ("resources.json", "r") as datafile:
-    data = json.load(datafile) 
 
+def access_test_data():
+    with open ("resources.json", "r") as datafile:
+     data = json.load(datafile) 
+    return data
+
+def get_resource_details(data):
+    resources = data["resources"]
+    for resource_type,resource_list in resources.items():
+        for resource in resource_list:
+          name = (resource["common_meta_data"])["name"]
+          id = (resource["common_meta_data"])["resource_id"]
+          properties =(resource["properties"])
+    return name,id,properties
+
+def print_resource_details(name,id,properties,resources):
+      for resource_type,resource_list in resources.items():
+            for resource in resource_list:
+                print(f"resource type: {resource_type} name: {name} resource_id:, {id}")
+
+                for property,value in properties.items():
+                     print(" ",property, "-->", value )
+        
+      
+    
+data = access_test_data()
 
 resources = data["resources"]
 expected_public_access = False
@@ -12,21 +35,14 @@ public_access_issues=[]
 encryption_issues=[]
 secureboot_issues=[]
 #PRINTING AND JSON CONNECT
+data = access_test_data()
+name,id,properties =get_resource_details(data)
+print_resource_details(name,id,properties,resources)
 
-for resource_type,resource_list in resources.items():
-    print("-"*45)
-    print(resource_type)
-    for resource in resource_list:
-        name = (resource["common_meta_data"])["name"]
-        id = (resource["common_meta_data"])["resource_id"]
-        properties =(resource["properties"])
-        print("-"*45)
-        print("  name:",name," resource_id:", id)
-        for property,value in properties.items():
-            print(" ",property, "-->", value )
+        
+        
 
-
-
+'''
 #LOGIC for PAK
         if resource_type == "virtual_machines" or resource_type == "databases": 
                 PAK = properties["security"]["public_access"]
@@ -81,8 +97,8 @@ for i in secureboot_issues:
       print(" ", i)
 
                      
-        
-
+    
+'''
   
         
         
