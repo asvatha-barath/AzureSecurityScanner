@@ -18,6 +18,18 @@ def print_resource_details(name,id,properties,resource_type):
         for property,value in properties.items():
             print(" ",property, "-->", value )
 
+def get_encryption(resource_type,properties):
+      if resource_type in ["storage_accounts","databases"]:
+            ENCRYPT = properties["security"]["encryption"]
+      elif resource_type=="virtual_machines": 
+            ENCRYPT = properties["security"]["disk_encryption"]
+                
+      else:
+            raise KeyError 
+      return ENCRYPT
+
+
+       
 def get_public_access(resource_type,properties):
      if resource_type in[ "virtual_machines","databases"]: 
                      PAK = properties["security"]["public_access"]
@@ -64,20 +76,30 @@ class VMsecurity (identify_security_issues):
    def __init__(expected_encryption, expected_public_access, expected_secure_boot):
         super().__init__(True,False,True)
 
-           
+        '''
 data = access_test_data()
 
 resources = data["resources"]
 public_access_issues =[]
+encryption_issues = []
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
               name,id,properties = get_resource_details(resource)
               print_resource_details(name,id,properties,resource_type)
               PAK = get_public_access(resource_type,properties)
-              check_security(PAK, True,public_access_issues,name)
+              ENCRYPT = get_encryption(resource_type,properties)
+              check_security(PAK, False,public_access_issues,name)
+              check_security(ENCRYPT, True,encryption_issues,name)
+    
 
-              
-print(public_access_issues)
+
+print("\nPublic Access Issues\n")
+for issue in public_access_issues:
+    print(issue)
+
+print("\nEncryption Issues\n")
+for issue in encryption_issues:
+    print(issue)
 
 
 #PRINTING AND JSON CONNECT
