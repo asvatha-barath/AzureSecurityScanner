@@ -40,7 +40,10 @@ def get_public_access(resource_type,properties):
      return PAK #returning public access key
 
 
-       
+def get_secure_boot(resource_type,properties):#USE WITH VM ONLY
+       if resource_type== "virtual_machines":
+          BOOT = properties["security"]["secure_boot"]
+          return BOOT
      
 def check_security(actualValue, expectedValue,issueList,name):
       if actualValue == expectedValue:
@@ -82,14 +85,19 @@ data = access_test_data()
 resources = data["resources"]
 public_access_issues =[]
 encryption_issues = []
+secure_boot_issues=[]
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
               name,id,properties = get_resource_details(resource)
               print_resource_details(name,id,properties,resource_type)
               PAK = get_public_access(resource_type,properties)
               ENCRYPT = get_encryption(resource_type,properties)
+              BOOT = get_secure_boot(resource_type, properties)
+
               check_security(PAK, False,public_access_issues,name)
               check_security(ENCRYPT, True,encryption_issues,name)
+              if resource_type == "virtual_machines":
+                check_security(BOOT,True,secure_boot_issues,name)
     
 
 
@@ -101,6 +109,9 @@ print("\nEncryption Issues\n")
 for issue in encryption_issues:
     print(issue)
 
+print("\nSecure Boot Issues\n")
+for issue in secure_boot_issues:
+      print(issue)
 
 #PRINTING AND JSON CONNECT
 
