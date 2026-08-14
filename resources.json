@@ -49,7 +49,7 @@
        "security": {
                         "public_access": false,
                         "disk_encryption": true,
-                        "secure_boot": true,
+                        "secure_boot": false,
                         "network_security_group": true
                     }
        
