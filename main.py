@@ -18,6 +18,29 @@ def print_resource_details(name,id,properties,resource_type):
         for property,value in properties.items():
             print(" ",property, "-->", value )
 
+def get_public_access(resource_type,properties):
+     if resource_type in[ "virtual_machines","databases"]: 
+                     PAK = properties["security"]["public_access"]
+     elif resource_type =="storage_accounts": 
+                 PAK = properties["network"]["public_network_access"]
+     else:
+                  raise KeyError
+     return PAK #returning public access key
+
+
+       
+     
+def check_security(actualValue, expectedValue,issueList,name):
+      if actualValue == expectedValue:
+        return True
+                         
+      else:
+        issueList.append(name)
+        return False
+
+
+
+
 #Logic Only
 '''
 class identify_security_issues(ABC):
@@ -41,22 +64,20 @@ class VMsecurity (identify_security_issues):
    def __init__(expected_encryption, expected_public_access, expected_secure_boot):
         super().__init__(True,False,True)
 
-        
-   def check_public_access(self):
-       PAK = properties["security"]["public_access"]
-       if PAK == expected_public_access:
-                   print("PUBLIC ACCESS - SECURITY PASS")
-                   
-       else:
-                    print("PUBLIC ACCESS - SECURITY FAIL")'''
            
 data = access_test_data()
 
 resources = data["resources"]
+public_access_issues =[]
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
               name,id,properties = get_resource_details(resource)
               print_resource_details(name,id,properties,resource_type)
+              PAK = get_public_access(resource_type,properties)
+              check_security(PAK, True,public_access_issues,name)
+
+              
+print(public_access_issues)
 
 
 #PRINTING AND JSON CONNECT
