@@ -55,3 +55,26 @@ def check_security(actualValue, expectedValue,issueList,issue_type):
         return False
 
 
+
+
+
+data = access_test_data()
+
+resources = data["resources"]
+
+for resource_type, resource_list in resources.items():
+        for resource in resource_list:
+              issue_list=[]
+              name,id,properties = get_resource_details(resource)
+              print_resource_details(name,id,properties,resource_type)
+              PAK = get_public_access(resource_type,properties)
+              ENCRYPT = get_encryption(resource_type,properties)
+              
+              check_security(PAK, False,issue_list,"PUBLIC ACCESS")
+              check_security(ENCRYPT,False,issue_list,"ENCRYPTION")
+              if resource_type == "virtual_machines":
+                BOOT = get_secure_boot(resource_type, properties)
+                check_security(BOOT,False,issue_list,"SECURE BOOT")
+              for issueTest in issue_list:
+                    print(f"FAILED:{issueTest} TEST")
+
