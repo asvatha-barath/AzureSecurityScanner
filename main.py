@@ -18,6 +18,8 @@ def print_resource_details(name,id,properties,resource_type):
         for property,value in properties.items():
             print(" ",property, "-->", value )
 
+
+
 def get_encryption(resource_type,properties):
       if resource_type in ["storage_accounts","databases"]:
             ENCRYPT = properties["security"]["encryption"]
@@ -66,7 +68,7 @@ for resource_type, resource_list in resources.items():
         for resource in resource_list:
               issue_list=[]
               name,id,properties = get_resource_details(resource)
-              print_resource_details(name,id,properties,resource_type)
+              print(name)
               PAK = get_public_access(resource_type,properties)
               ENCRYPT = get_encryption(resource_type,properties)
               
