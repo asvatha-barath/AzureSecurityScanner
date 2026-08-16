@@ -60,11 +60,15 @@ def check_security(actualValue, expectedValue,issueList,issue_type):
 
 
 data = access_test_data()
+issuedResources =  0
+resourcecount = 0
+totalissues = 0
 
 resources = data["resources"]
 
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
+              resourcecount +=1 #incrementing to find amount of resources read
               issue_list=[]
               name,id,properties = get_resource_details(resource)
               print(f"\n{name}")
@@ -78,7 +82,14 @@ for resource_type, resource_list in resources.items():
                 check_security(BOOT,True,issue_list,"SECURE BOOT")
               if not issue_list:
                     print("ALL SECURITY TESTS PASSED")
-              for issueTest in issue_list:
-                    print(f"FAILED:{issueTest} TEST")
+              else:
+                 issuedResources += 1
+                 items = len(issue_list)
+                 totalissues += items
+                 for issueTest in issue_list:
+                      print(f"FAILED:{issueTest} TEST")
             
 
+print(resourcecount)
+print(totalissues)
+print(issuedResources)
