@@ -73,7 +73,7 @@ totalissues = 0
 resources = data["resources"]
 
 all_issues = {}
-all_status ={}
+all_status = {}
 
 
 for resource_type, resource_list in resources.items():
@@ -81,28 +81,15 @@ for resource_type, resource_list in resources.items():
               resourcecount +=1 #incrementing to find amount of resources read
               issue_list=[]
               name,id,properties = get_resource_details(resource)
-              print(f"\n{name}")
               PAK = get_public_access(resource_type,properties)
               ENCRYPT = get_encryption(resource_type,properties)
-              
               check_security(PAK, False,issue_list,"PUBLIC ACCESS")
               check_security(ENCRYPT,True,issue_list,"ENCRYPTION")
               if resource_type == "virtual_machines":
                 BOOT = get_secure_boot(resource_type, properties)
                 check_security(BOOT,True,issue_list,"SECURE BOOT")
-              status = check_status(issue_list)
               
-              print(f"STATUS: {status}")
               all_issues[name]= issue_list
-              all_status[name] = status
-              '''if not issue_list:
-                    print("ALL SECURITY TESTS PASSED")
-              else:
-                 issuedResources += 1
-                 items = len(issue_list)
-                 totalissues += items
-                 for issueTest in issue_list:
-                      print(f"FAILED:{issueTest} TEST")'''
 
 
 print("="*45)
@@ -112,7 +99,23 @@ print(f"Resources Scanned: {resourcecount}")
 print(f"Resources with Security Issues: {issuedResources}")
 print(f"Total Security Issues: {totalissues}")
 
-              
+for resource_type, resource_list in resources.items():
+        for resource in resource_list:
+              name,id,properties = get_resource_details(resource)
+              issue_list = all_issues[name]
+              status = check_status(issue_list)
+              print("-"*45)
+              print(f"{name}")
+              print("-"*45)
+              print(f"STATUS: {status}")
+              if not issue_list:
+                    print("ALL SECURITY TESTS PASSED")
+              else:
+                 issuedResources += 1
+                 items = len(issue_list)
+                 totalissues += items
+                 for issueTest in issue_list:
+                      print(f"FAILED:{issueTest} TEST")
 
 
             
