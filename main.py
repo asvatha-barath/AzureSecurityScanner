@@ -55,7 +55,12 @@ def check_security(actualValue, expectedValue,issueList,issue_type):
         issueList.append(issue_type)
         return False
 
-
+def check_status(issue_list):
+      if len(issue_list) == 0:
+            status = "SECURE"
+      elif len(issue_list) >= 1:
+            status = "NEEDS ATTENTION"
+      return status
 
 
 
@@ -64,7 +69,12 @@ issuedResources =  0
 resourcecount = 0
 totalissues = 0
 
+
 resources = data["resources"]
+
+all_issues = {}
+all_status ={}
+
 
 for resource_type, resource_list in resources.items():
         for resource in resource_list:
@@ -80,15 +90,19 @@ for resource_type, resource_list in resources.items():
               if resource_type == "virtual_machines":
                 BOOT = get_secure_boot(resource_type, properties)
                 check_security(BOOT,True,issue_list,"SECURE BOOT")
-              if not issue_list:
+              status = check_status(issue_list)
+              
+              print(f"STATUS: {status}")
+              all_issues[name]= issue_list
+              all_status[name] = status
+              '''if not issue_list:
                     print("ALL SECURITY TESTS PASSED")
               else:
                  issuedResources += 1
                  items = len(issue_list)
                  totalissues += items
                  for issueTest in issue_list:
-                      print(f"FAILED:{issueTest} TEST")
-            
+                      print(f"FAILED:{issueTest} TEST")'''
 
 
 print("="*45)
@@ -97,3 +111,9 @@ print("="*45)
 print(f"Resources Scanned: {resourcecount}")
 print(f"Resources with Security Issues: {issuedResources}")
 print(f"Total Security Issues: {totalissues}")
+
+              
+
+
+            
+
