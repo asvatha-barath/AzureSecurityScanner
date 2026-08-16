@@ -1,5 +1,4 @@
 import json #importing json files
-from abc import ABC, abstractmethod
 def access_test_data():
     with open ("resources.json", "r") as datafile:
      data = json.load(datafile) 
@@ -68,15 +67,18 @@ for resource_type, resource_list in resources.items():
         for resource in resource_list:
               issue_list=[]
               name,id,properties = get_resource_details(resource)
-              print(name)
+              print(f"\n{name}")
               PAK = get_public_access(resource_type,properties)
               ENCRYPT = get_encryption(resource_type,properties)
               
               check_security(PAK, False,issue_list,"PUBLIC ACCESS")
-              check_security(ENCRYPT,False,issue_list,"ENCRYPTION")
+              check_security(ENCRYPT,True,issue_list,"ENCRYPTION")
               if resource_type == "virtual_machines":
                 BOOT = get_secure_boot(resource_type, properties)
-                check_security(BOOT,False,issue_list,"SECURE BOOT")
+                check_security(BOOT,True,issue_list,"SECURE BOOT")
+              if not issue_list:
+                    print("ALL SECURITY TESTS PASSED")
               for issueTest in issue_list:
                     print(f"FAILED:{issueTest} TEST")
+            
 
