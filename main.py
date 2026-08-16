@@ -90,6 +90,10 @@ for resource_type, resource_list in resources.items():
                       print(f"FAILED:{issueTest} TEST")
             
 
-print(resourcecount)
-print(totalissues)
-print(issuedResources)
+
+print("="*45)
+print("Azure Security Agent")
+print("="*45)
+print(f"Resources Scanned: {resourcecount}")
+print(f"Resources with Security Issues: {issuedResources}")
+print(f"Total Security Issues: {totalissues}")
